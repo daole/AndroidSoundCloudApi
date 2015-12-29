@@ -1,16 +1,6 @@
 package com.dreamdigitizers.androidsoundcloudapi;
 
 class Endpoints {
-    static final String CONNECT_URL = "https://soundcloud.com/connect"
-            + "?client_id=%s"
-            + "&redirect_uri=%s"
-            + "&response_type=%s"
-            + "&scope=%s"
-            + "&display=%s"
-            + "&state=%s";
-
-    static final String API_BASE_URL = "https://api.soundcloud.com";
-
     static final String TOKEN = "/oauth2/token";
 
     static final String USERS = "/users";
