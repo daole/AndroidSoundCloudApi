@@ -1,12 +1,15 @@
 package com.dreamdigitizers.androidsoundcloudapi.models;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Token {
-    @SerializedName("accessToken")
+    @SerializedName("access_token")
+    @Expose
     private String mAccessToken;
 
     @SerializedName("scope")
+    @Expose
     private String mScope;
 
     public String getAccessToken() {
