@@ -1,4 +1,4 @@
-package com.dreamdigitizers.androidsoundcloudapi;
+package com.dreamdigitizers.androidsoundcloudapi.core;
 
 class Endpoints {
     static final String TOKEN = "/oauth2/token";

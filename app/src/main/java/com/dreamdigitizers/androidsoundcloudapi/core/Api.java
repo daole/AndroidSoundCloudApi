@@ -1,4 +1,4 @@
-package com.dreamdigitizers.androidsoundcloudapi;
+package com.dreamdigitizers.androidsoundcloudapi.core;
 
 import android.text.TextUtils;
 
@@ -25,8 +25,44 @@ import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 import rx.Observable;
 
-public class Api implements IApi {
+class Api implements IApi {
+    private static final String ERROR_MESSAGE__NOT_YET_INITIALIZED = "Api.initialize() has not yet called.";
+
+    private static Api instance;
+
     private IApi mApis;
+
+    public static void initialize(final String pClientId) {
+        Api.initialize(pClientId, null);
+    }
+
+    public static void initialize(final String pClientId, final String pOauthToken) {
+        Api.instance = new Api(pClientId, pOauthToken);
+    }
+
+    public static Api getInstance() {
+        if(Api.instance == null) {
+            throw new IllegalStateException(Api.ERROR_MESSAGE__NOT_YET_INITIALIZED);
+        }
+        return Api.instance;
+    }
+
+    public static String getConnectionString(
+            String pClientId,
+            String pRedirectUri,
+            String pResponseType,
+            String pScope,
+            String pDisplay,
+            String pState) {
+        return String.format(
+                IApi.API_URL__CONNECT,
+                pClientId,
+                pRedirectUri,
+                pResponseType,
+                pScope,
+                pDisplay,
+                pState);
+    }
 
     private Api(final String pClientId, final String pOauthToken) {
         OkHttpClient okHttpClient = new OkHttpClient();
@@ -47,31 +83,13 @@ public class Api implements IApi {
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(IApi.API_URL__BASE)
+                .baseUrl(API_URL__BASE)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
 
         this.mApis = retrofit.create(IApi.class);
-    }
-
-    @Override
-    public String getConnectionString(
-            String pClientId,
-            String pRedirectUri,
-            String pResponseType,
-            String pScope,
-            String pDisplay,
-            String pState) {
-        return String.format(
-                IApi.API_URL__CONNECT,
-                pClientId,
-                pRedirectUri,
-                pResponseType,
-                pScope,
-                pDisplay,
-                pState);
     }
 
     @Override

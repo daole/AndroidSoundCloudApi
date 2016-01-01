@@ -1,4 +1,4 @@
-package com.dreamdigitizers.androidsoundcloudapi;
+package com.dreamdigitizers.androidsoundcloudapi.core;
 
 import com.dreamdigitizers.androidsoundcloudapi.models.App;
 import com.dreamdigitizers.androidsoundcloudapi.models.Comment;
@@ -29,14 +29,6 @@ public interface IApi {
             + "&state=%s";
 
     static final String API_URL__BASE = "https://api.soundcloud.com";
-
-    String getConnectionString(
-            String pClientId,
-            String pRedirectUri,
-            String pResponseType,
-            String pScope,
-            String pDisplay,
-            String pState);
 
     //-----------------Token-----------------//
     @POST("/oauth2/token")
