@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.dreamdigitizers.androidsoundcloudapi.models.App;
 import com.dreamdigitizers.androidsoundcloudapi.models.Comment;
 import com.dreamdigitizers.androidsoundcloudapi.models.Group;
+import com.dreamdigitizers.androidsoundcloudapi.models.Me;
 import com.dreamdigitizers.androidsoundcloudapi.models.Playlist;
 import com.dreamdigitizers.androidsoundcloudapi.models.Token;
 import com.dreamdigitizers.androidsoundcloudapi.models.Track;
@@ -445,12 +446,12 @@ class Api implements IApi {
     }
 
     @Override
-    public Call<User> me() {
-        return this.mApis.me();
+    public Call<Me> me(String pAccessToken) {
+        return this.mApis.me(pAccessToken);
     }
 
     @Override
-    public Observable<User> meRx() {
-        return this.mApis.meRx();
+    public Observable<Me> meRx(String pAccessToken) {
+        return this.mApis.meRx(pAccessToken);
     }
 }

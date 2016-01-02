@@ -3,7 +3,7 @@ package com.dreamdigitizers.androidsoundcloudapi.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Token {
+public class Token extends Model {
     @SerializedName("access_token")
     @Expose
     private String mAccessToken;

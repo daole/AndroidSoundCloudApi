@@ -3,6 +3,7 @@ package com.dreamdigitizers.androidsoundcloudapi.core;
 import com.dreamdigitizers.androidsoundcloudapi.models.App;
 import com.dreamdigitizers.androidsoundcloudapi.models.Comment;
 import com.dreamdigitizers.androidsoundcloudapi.models.Group;
+import com.dreamdigitizers.androidsoundcloudapi.models.Me;
 import com.dreamdigitizers.androidsoundcloudapi.models.Playlist;
 import com.dreamdigitizers.androidsoundcloudapi.models.Token;
 import com.dreamdigitizers.androidsoundcloudapi.models.Track;
@@ -242,8 +243,8 @@ public interface IApi {
 
     //-----------------Me-----------------//
     @GET("/me")
-    Call<User> me();
+    Call<Me> me(@Query("oauth_token") String pAccessToken);
 
     @GET("/me")
-    Observable<User> meRx();
+    Observable<Me> meRx(@Query("oauth_token") String pAccessToken);
 }

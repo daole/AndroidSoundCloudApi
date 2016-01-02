@@ -3,7 +3,7 @@ package com.dreamdigitizers.androidsoundcloudapi.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class App {
+public class App extends Model {
     @SerializedName("id")
     @Expose
     private int mId;
