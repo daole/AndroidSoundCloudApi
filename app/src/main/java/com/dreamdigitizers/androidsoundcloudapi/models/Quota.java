@@ -3,7 +3,7 @@ package com.dreamdigitizers.androidsoundcloudapi.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Quota extends Model {
+public class Quota extends ModelBase {
     @SerializedName("unlimited_upload_quota")
     @Expose
     private boolean mUnlimitedUploadQuota;

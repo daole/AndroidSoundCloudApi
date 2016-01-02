@@ -5,7 +5,7 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class User extends Model {
+public class User extends ModelBase {
     @SerializedName("id")
     @Expose
     private int mId;

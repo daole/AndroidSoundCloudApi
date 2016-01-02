@@ -3,7 +3,7 @@ package com.dreamdigitizers.androidsoundcloudapi.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Group extends Model {
+public class Group extends ModelBase {
     @SerializedName("kind")
     @Expose
     private String mKind;

@@ -5,7 +5,7 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Playlist extends Model {
+public class Playlist extends ModelBase {
     @SerializedName("duration")
     @Expose
     private int mDuration;
