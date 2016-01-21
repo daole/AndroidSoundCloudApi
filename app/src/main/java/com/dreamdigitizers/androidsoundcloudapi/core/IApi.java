@@ -111,6 +111,9 @@ public interface IApi {
 
     //-----------------Track-----------------//
     @GET("/tracks")
+    Call<List<Track>> tracks();
+
+    @GET("/tracks")
     Call<List<Track>> tracks(
             @Query("q") String pQ,
             @Query("tags") String pTags,
@@ -126,6 +129,10 @@ public interface IApi {
             @Query("genres") String pGenres,
             @Query("types") String pTypes);
 
+    @GET("/tracks")
+    Observable<List<Track>> tracksRx();
+
+    @GET("/tracks")
     Observable<List<Track>> tracksRx(
             @Query("q") String pQ,
             @Query("tags") String pTags,
