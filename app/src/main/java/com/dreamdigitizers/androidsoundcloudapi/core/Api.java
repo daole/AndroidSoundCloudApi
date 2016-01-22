@@ -224,6 +224,11 @@ class Api implements IApi {
     }
 
     @Override
+    public Call<List<Track>> tracks() {
+        return this.mApis.tracks();
+    }
+
+    @Override
     public Call<List<Track>> tracks(
             String pQ,
             String pTags,
@@ -252,6 +257,11 @@ class Api implements IApi {
                 pIds,
                 pGenres,
                 pTypes);
+    }
+
+    @Override
+    public Observable<List<Track>> tracksRx() {
+        return this.mApis.tracksRx();
     }
 
     @Override
