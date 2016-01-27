@@ -12,11 +12,11 @@ public class Track extends ModelBase {
     @Expose
     private String mKind;
 
-    @SerializedName("createdAt")
+    @SerializedName("created_at")
     @Expose
     private String mCreatedAt;
 
-    @SerializedName("userId")
+    @SerializedName("user_id")
     @Expose
     private int mUserId;
 
@@ -32,11 +32,11 @@ public class Track extends ModelBase {
     @Expose
     private String mState;
 
-    @SerializedName("originalContentSize")
+    @SerializedName("original_content_size")
     @Expose
     private int mOriginalContentSize;
 
-    @SerializedName("lastModified")
+    @SerializedName("last_modified")
     @Expose
     private String mLastModified;
 
@@ -44,7 +44,7 @@ public class Track extends ModelBase {
     @Expose
     private String mSharing;
 
-    @SerializedName("tagList")
+    @SerializedName("tag_list")
     @Expose
     private String mTagList;
 
@@ -64,15 +64,15 @@ public class Track extends ModelBase {
     @Expose
     private boolean mDownloadable;
 
-    @SerializedName("purchaseUrl")
+    @SerializedName("purchase_url")
     @Expose
     private String mPurchaseUrl;
 
-    @SerializedName("labelId")
+    @SerializedName("label_id")
     @Expose
     private int mLabelId;
 
-    @SerializedName("purchaseTitle")
+    @SerializedName("purchase_title")
     @Expose
     private String mPurchaseTitle;
 
@@ -88,7 +88,7 @@ public class Track extends ModelBase {
     @Expose
     private String mDescription;
 
-    @SerializedName("labelName")
+    @SerializedName("label_name")
     @Expose
     private String mLabelName;
 
@@ -96,11 +96,11 @@ public class Track extends ModelBase {
     @Expose
     private String mRelease;
 
-    @SerializedName("trackType")
+    @SerializedName("track_type")
     @Expose
     private String mTrackType;
 
-    @SerializedName("keySignature")
+    @SerializedName("key_signature")
     @Expose
     private String mKeySignature;
 
@@ -108,7 +108,7 @@ public class Track extends ModelBase {
     @Expose
     private String mIsrc;
 
-    @SerializedName("videoUrl")
+    @SerializedName("video_url")
     @Expose
     private String mVideoUrl;
 
@@ -116,19 +116,19 @@ public class Track extends ModelBase {
     @Expose
     private String mBpm;
 
-    @SerializedName("releaseYear")
+    @SerializedName("release_year")
     @Expose
     private int mReleaseYear;
 
-    @SerializedName("releaseMonth")
+    @SerializedName("release_month")
     @Expose
     private int mReleaseMonth;
 
-    @SerializedName("releaseDay")
+    @SerializedName("release_day")
     @Expose
     private int mReleaseDay;
 
-    @SerializedName("originalFormat")
+    @SerializedName("original_format")
     @Expose
     private String mOriginalFormat;
 
@@ -148,41 +148,45 @@ public class Track extends ModelBase {
     @Expose
     private App mCreatedWith;
 
-    @SerializedName("permalinkUrl")
+    @SerializedName("permalink_url")
     @Expose
     private String mPermalinkUrl;
 
-    @SerializedName("artworkUrl")
+    @SerializedName("artwork_url")
     @Expose
     private String mArtworkUrl;
 
-    @SerializedName("waveformUrl")
+    @SerializedName("waveform_url")
     @Expose
     private String mWaveformUrl;
 
-    @SerializedName("streamUrl")
+    @SerializedName("stream_url")
     @Expose
     private String mStreamUrl;
 
-    @SerializedName("playbackCount")
+    @SerializedName("playback_count")
     @Expose
     private int mPlaybackCount;
 
-    @SerializedName("downloadCount")
+    @SerializedName("download_count")
     @Expose
     private int mDownloadCount;
 
-    @SerializedName("favoritingsCount")
+    @SerializedName("favoritings_count")
     @Expose
     private int mFavoritingsCount;
 
-    @SerializedName("commentCount")
+    @SerializedName("comment_count")
     @Expose
     private int mCommentCount;
 
-    @SerializedName("attachmentsUri")
+    @SerializedName("attachments_uri")
     @Expose
     private String mAttachmentsUri;
+
+    @SerializedName("user_favorite")
+    @Expose
+    private boolean mUserFavorite;
 
     public int getId() {
         return this.mId;
@@ -542,5 +546,13 @@ public class Track extends ModelBase {
 
     public void setCreatedWith(App pCreatedWith) {
         this.mCreatedWith = pCreatedWith;
+    }
+
+    public boolean getUserFavorite() {
+        return this.mUserFavorite;
+    }
+
+    public void setUserFavorite(boolean pUserFavorite) {
+        this.mUserFavorite = pUserFavorite;
     }
 }

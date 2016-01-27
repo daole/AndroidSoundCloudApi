@@ -1,9 +1,10 @@
 package com.dreamdigitizers.androidsoundcloudapi.models;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class User extends ModelBase {
     @SerializedName("id")
@@ -106,7 +107,7 @@ public class User extends ModelBase {
     @Expose
     private int mFollowingsCount;
 
-    @SerializedName("mSubscriptions")
+    @SerializedName("subscriptions")
     @Expose
     private List mSubscriptions = new ArrayList();
 

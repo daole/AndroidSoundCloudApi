@@ -38,7 +38,9 @@ class Api implements IApi {
     }
 
     public static void initialize(final String pClientId, final String pOauthToken) {
-        Api.instance = new Api(pClientId, pOauthToken);
+        if (Api.instance == null) {
+            Api.instance = new Api(pClientId, pOauthToken);
+        }
     }
 
     public static Api getInstance() {
