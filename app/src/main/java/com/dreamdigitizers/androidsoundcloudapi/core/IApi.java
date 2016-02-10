@@ -1,6 +1,7 @@
 package com.dreamdigitizers.androidsoundcloudapi.core;
 
 import com.dreamdigitizers.androidsoundcloudapi.models.App;
+import com.dreamdigitizers.androidsoundcloudapi.models.Collection;
 import com.dreamdigitizers.androidsoundcloudapi.models.Comment;
 import com.dreamdigitizers.androidsoundcloudapi.models.Group;
 import com.dreamdigitizers.androidsoundcloudapi.models.Me;
@@ -130,6 +131,28 @@ public interface IApi {
             @Query("types") String pTypes);
 
     @GET("/tracks")
+    Call<Collection> tracks(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset);
+
+    @GET("/tracks")
+    Call<Collection> tracks(
+            @Query("q") String pQ,
+            @Query("tags") String pTags,
+            @Query("filter") String pFilter,
+            @Query("license") String pLicense,
+            @Query("bpm[from]") String pBpmFrom,
+            @Query("bpm[to]") String pBpmTo,
+            @Query("duration[from]") String pDurationFrom,
+            @Query("duration[to]") String pDurationTo,
+            @Query("created_at[from]") String pCreatedAtFrom,
+            @Query("created_at[to]") String pCreatedAtTo,
+            @Query("ids") String pIds,
+            @Query("genres") String pGenres,
+            @Query("types") String pTypes,
+            @Query("linked_partitioning") int pLinkedPartitioning,
+            @Query("limit") int pLimit,
+            @Query("offset") int pOffset);
+
+    @GET("/tracks")
     Observable<List<Track>> tracksRx();
 
     @GET("/tracks")
@@ -147,6 +170,28 @@ public interface IApi {
             @Query("ids") String pIds,
             @Query("genres") String pGenres,
             @Query("types") String pTypes);
+
+    @GET("/tracks")
+    Observable<Collection> tracksRx(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset);
+
+    @GET("/tracks")
+    Observable<Collection> tracksRx(
+            @Query("q") String pQ,
+            @Query("tags") String pTags,
+            @Query("filter") String pFilter,
+            @Query("license") String pLicense,
+            @Query("bpm[from]") String pBpmFrom,
+            @Query("bpm[to]") String pBpmTo,
+            @Query("duration[from]") String pDurationFrom,
+            @Query("duration[to]") String pDurationTo,
+            @Query("created_at[from]") String pCreatedAtFrom,
+            @Query("created_at[to]") String pCreatedAtTo,
+            @Query("ids") String pIds,
+            @Query("genres") String pGenres,
+            @Query("types") String pTypes,
+            @Query("linked_partitioning") int pLinkedPartitioning,
+            @Query("limit") int pLimit,
+            @Query("offset") int pOffset);
 
     @GET("/tracks/{id}")
     Call<Track> track(@Path("id") int pId);

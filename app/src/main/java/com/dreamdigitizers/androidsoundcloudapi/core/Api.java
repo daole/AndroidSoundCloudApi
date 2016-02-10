@@ -3,6 +3,7 @@ package com.dreamdigitizers.androidsoundcloudapi.core;
 import android.text.TextUtils;
 
 import com.dreamdigitizers.androidsoundcloudapi.models.App;
+import com.dreamdigitizers.androidsoundcloudapi.models.Collection;
 import com.dreamdigitizers.androidsoundcloudapi.models.Comment;
 import com.dreamdigitizers.androidsoundcloudapi.models.Group;
 import com.dreamdigitizers.androidsoundcloudapi.models.Me;
@@ -262,6 +263,48 @@ class Api implements IApi {
     }
 
     @Override
+    public Call<Collection> tracks(int pLinkedPartitioning, int pLimit, int pOffset) {
+        return this.mApis.tracks(pLinkedPartitioning, pLimit, pOffset);
+    }
+
+    @Override
+    public Call<Collection> tracks(
+            String pQ,
+            String pTags,
+            String pFilter,
+            String pLicense,
+            String pBpmFrom,
+            String pBpmTo,
+            String pDurationFrom,
+            String pDurationTo,
+            String pCreatedAtFrom,
+            String pCreatedAtTo,
+            String pIds,
+            String pGenres,
+            String pTypes,
+            int pLinkedPartitioning,
+            int pLimit,
+            int pOffset) {
+        return this.mApis.tracks(
+                pQ,
+                pTags,
+                pFilter,
+                pLicense,
+                pBpmFrom,
+                pBpmTo,
+                pDurationFrom,
+                pDurationTo,
+                pCreatedAtFrom,
+                pCreatedAtTo,
+                pIds,
+                pGenres,
+                pTypes,
+                pLinkedPartitioning,
+                pLimit,
+                pOffset);
+    }
+
+    @Override
     public Observable<List<Track>> tracksRx() {
         return this.mApis.tracksRx();
     }
@@ -295,6 +338,48 @@ class Api implements IApi {
                 pIds,
                 pGenres,
                 pTypes);
+    }
+
+    @Override
+    public Observable<Collection> tracksRx(int pLinkedPartitioning, int pLimit, int pOffset) {
+        return this.mApis.tracksRx(pLinkedPartitioning, pLimit, pOffset);
+    }
+
+    @Override
+    public Observable<Collection> tracksRx(
+            String pQ,
+            String pTags,
+            String pFilter,
+            String pLicense,
+            String pBpmFrom,
+            String pBpmTo,
+            String pDurationFrom,
+            String pDurationTo,
+            String pCreatedAtFrom,
+            String pCreatedAtTo,
+            String pIds,
+            String pGenres,
+            String pTypes,
+            int pLinkedPartitioning,
+            int pLimit,
+            int pOffset) {
+        return this.mApis.tracksRx(
+                pQ,
+                pTags,
+                pFilter,
+                pLicense,
+                pBpmFrom,
+                pBpmTo,
+                pDurationFrom,
+                pDurationTo,
+                pCreatedAtFrom,
+                pCreatedAtTo,
+                pIds,
+                pGenres,
+                pTypes,
+                pLinkedPartitioning,
+                pLimit,
+                pOffset);
     }
 
     @Override
