@@ -232,6 +232,11 @@ class Api implements IApi {
     }
 
     @Override
+    public Call<List<Track>> tracks(String pQ) {
+        return this.mApis.tracks(pQ);
+    }
+
+    @Override
     public Call<List<Track>> tracks(
             String pQ,
             String pTags,
@@ -265,6 +270,11 @@ class Api implements IApi {
     @Override
     public Call<Collection> tracks(int pLinkedPartitioning, int pLimit, int pOffset) {
         return this.mApis.tracks(pLinkedPartitioning, pLimit, pOffset);
+    }
+
+    @Override
+    public Call<Collection> tracks(int pLinkedPartitioning, int pLimit, int pOffset, String pQ) {
+        return this.mApis.tracks(pLinkedPartitioning, pLimit, pOffset, pQ);
     }
 
     @Override
@@ -310,6 +320,11 @@ class Api implements IApi {
     }
 
     @Override
+    public Observable<List<Track>> tracksRx(String pQ) {
+        return this.mApis.tracksRx(pQ);
+    }
+
+    @Override
     public Observable<List<Track>> tracksRx(
             String pQ,
             String pTags,
@@ -343,6 +358,11 @@ class Api implements IApi {
     @Override
     public Observable<Collection> tracksRx(int pLinkedPartitioning, int pLimit, int pOffset) {
         return this.mApis.tracksRx(pLinkedPartitioning, pLimit, pOffset);
+    }
+
+    @Override
+    public Observable<Collection> tracksRx(int pLinkedPartitioning, int pLimit, int pOffset, String pQ) {
+        return this.mApis.tracksRx(pLinkedPartitioning, pLimit, pOffset, pQ);
     }
 
     @Override

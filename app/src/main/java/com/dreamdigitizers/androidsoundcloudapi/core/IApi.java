@@ -115,6 +115,9 @@ public interface IApi {
     Call<List<Track>> tracks();
 
     @GET("/tracks")
+    Call<List<Track>> tracks(@Query("q") String pQ);
+
+    @GET("/tracks")
     Call<List<Track>> tracks(
             @Query("q") String pQ,
             @Query("tags") String pTags,
@@ -132,6 +135,9 @@ public interface IApi {
 
     @GET("/tracks")
     Call<Collection> tracks(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset);
+
+    @GET("/tracks")
+    Call<Collection> tracks(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset, @Query("q") String pQ);
 
     @GET("/tracks")
     Call<Collection> tracks(
@@ -156,6 +162,9 @@ public interface IApi {
     Observable<List<Track>> tracksRx();
 
     @GET("/tracks")
+    Observable<List<Track>> tracksRx(@Query("q") String pQ);
+
+    @GET("/tracks")
     Observable<List<Track>> tracksRx(
             @Query("q") String pQ,
             @Query("tags") String pTags,
@@ -173,6 +182,9 @@ public interface IApi {
 
     @GET("/tracks")
     Observable<Collection> tracksRx(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset);
+
+    @GET("/tracks")
+    Observable<Collection> tracksRx(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset, @Query("q") String pQ);
 
     @GET("/tracks")
     Observable<Collection> tracksRx(
