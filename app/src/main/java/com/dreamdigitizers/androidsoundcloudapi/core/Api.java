@@ -87,7 +87,7 @@ class Api implements IApi {
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(API_URL__BASE)
+                .baseUrl(IApi.API_URL__BASE)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -222,8 +222,18 @@ class Api implements IApi {
     }
 
     @Override
+    public Call<Collection> userFavorites(int pId, int pLinkedPartitioning, int pLimit, String pOffset) {
+        return this.mApis.userFavorites(pId, pLinkedPartitioning, pLimit, pOffset);
+    }
+
+    @Override
     public Observable<List<Track>> userFavoritesRx(int pId) {
         return this.mApis.userFavoritesRx(pId);
+    }
+
+    @Override
+    public Observable<Collection> userFavoritesRx(int pId, int pLinkedPartitioning, int pLimit, String pOffset) {
+        return this.mApis.userFavoritesRx(pId, pLinkedPartitioning, pLimit, pOffset);
     }
 
     @Override
@@ -279,6 +289,9 @@ class Api implements IApi {
 
     @Override
     public Call<Collection> tracks(
+            int pLinkedPartitioning,
+            int pLimit,
+            int pOffset,
             String pQ,
             String pTags,
             String pFilter,
@@ -291,11 +304,11 @@ class Api implements IApi {
             String pCreatedAtTo,
             String pIds,
             String pGenres,
-            String pTypes,
-            int pLinkedPartitioning,
-            int pLimit,
-            int pOffset) {
+            String pTypes) {
         return this.mApis.tracks(
+                pLinkedPartitioning,
+                pLimit,
+                pOffset,
                 pQ,
                 pTags,
                 pFilter,
@@ -308,10 +321,7 @@ class Api implements IApi {
                 pCreatedAtTo,
                 pIds,
                 pGenres,
-                pTypes,
-                pLinkedPartitioning,
-                pLimit,
-                pOffset);
+                pTypes);
     }
 
     @Override
@@ -367,6 +377,9 @@ class Api implements IApi {
 
     @Override
     public Observable<Collection> tracksRx(
+            int pLinkedPartitioning,
+            int pLimit,
+            int pOffset,
             String pQ,
             String pTags,
             String pFilter,
@@ -379,11 +392,11 @@ class Api implements IApi {
             String pCreatedAtTo,
             String pIds,
             String pGenres,
-            String pTypes,
-            int pLinkedPartitioning,
-            int pLimit,
-            int pOffset) {
+            String pTypes) {
         return this.mApis.tracksRx(
+                pLinkedPartitioning,
+                pLimit,
+                pOffset,
                 pQ,
                 pTags,
                 pFilter,
@@ -396,10 +409,7 @@ class Api implements IApi {
                 pCreatedAtTo,
                 pIds,
                 pGenres,
-                pTypes,
-                pLinkedPartitioning,
-                pLimit,
-                pOffset);
+                pTypes);
     }
 
     @Override

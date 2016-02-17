@@ -22,7 +22,7 @@ import retrofit.http.Query;
 import rx.Observable;
 
 public interface IApi {
-    static final String API_URL__CONNECT = "https://soundcloud.com/connect"
+    String API_URL__CONNECT = "https://soundcloud.com/connect"
             + "?client_id=%s"
             + "&redirect_uri=%s"
             + "&response_type=%s"
@@ -30,7 +30,7 @@ public interface IApi {
             + "&display=%s"
             + "&state=%s";
 
-    static final String API_URL__BASE = "https://api.soundcloud.com";
+    String API_URL__BASE = "https://api.soundcloud.com";
 
     //-----------------Token-----------------//
     @POST("/oauth2/token")
@@ -108,7 +108,13 @@ public interface IApi {
     Call<List<Track>> userFavorites(@Path("id") int pId);
 
     @GET("/users/{id}/favorites")
+    Call<Collection> userFavorites(@Path("id") int pId, @Query("linked_partitioning") int pLinkedPartitioning, @Query("page_size") int pLimit, @Query("cursor") String pOffset);
+
+    @GET("/users/{id}/favorites")
     Observable<List<Track>> userFavoritesRx(@Path("id") int pId);
+
+    @GET("/users/{id}/favorites")
+    Observable<Collection> userFavoritesRx(@Path("id") int pId, @Query("linked_partitioning") int pLinkedPartitioning, @Query("page_size") int pLimit, @Query("cursor") String pOffset);
 
     //-----------------Track-----------------//
     @GET("/tracks")
@@ -141,6 +147,9 @@ public interface IApi {
 
     @GET("/tracks")
     Call<Collection> tracks(
+            @Query("linked_partitioning") int pLinkedPartitioning,
+            @Query("limit") int pLimit,
+            @Query("offset") int pOffset,
             @Query("q") String pQ,
             @Query("tags") String pTags,
             @Query("filter") String pFilter,
@@ -153,10 +162,7 @@ public interface IApi {
             @Query("created_at[to]") String pCreatedAtTo,
             @Query("ids") String pIds,
             @Query("genres") String pGenres,
-            @Query("types") String pTypes,
-            @Query("linked_partitioning") int pLinkedPartitioning,
-            @Query("limit") int pLimit,
-            @Query("offset") int pOffset);
+            @Query("types") String pTypes);
 
     @GET("/tracks")
     Observable<List<Track>> tracksRx();
@@ -188,6 +194,9 @@ public interface IApi {
 
     @GET("/tracks")
     Observable<Collection> tracksRx(
+            @Query("linked_partitioning") int pLinkedPartitioning,
+            @Query("limit") int pLimit,
+            @Query("offset") int pOffset,
             @Query("q") String pQ,
             @Query("tags") String pTags,
             @Query("filter") String pFilter,
@@ -200,10 +209,7 @@ public interface IApi {
             @Query("created_at[to]") String pCreatedAtTo,
             @Query("ids") String pIds,
             @Query("genres") String pGenres,
-            @Query("types") String pTypes,
-            @Query("linked_partitioning") int pLinkedPartitioning,
-            @Query("limit") int pLimit,
-            @Query("offset") int pOffset);
+            @Query("types") String pTypes);
 
     @GET("/tracks/{id}")
     Call<Track> track(@Path("id") int pId);
