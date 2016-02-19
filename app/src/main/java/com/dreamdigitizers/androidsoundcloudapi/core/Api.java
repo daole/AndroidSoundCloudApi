@@ -32,7 +32,7 @@ class Api implements IApi {
 
     private static Api instance;
 
-    private IApi mApis;
+    private IApi mApi;
 
     public static void initialize(final String pClientId) {
         Api.initialize(pClientId, null);
@@ -93,7 +93,7 @@ class Api implements IApi {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
 
-        this.mApis = retrofit.create(IApi.class);
+        this.mApi = retrofit.create(IApi.class);
     }
 
     @Override
@@ -103,7 +103,7 @@ class Api implements IApi {
             String pRedirectUri,
             String pGrantType,
             String pCode) {
-        return this.mApis.token(
+        return this.mApi.token(
                 pClientId,
                 pClientSecret,
                 pRedirectUri,
@@ -118,7 +118,7 @@ class Api implements IApi {
             String pRedirectUri,
             String pGrantType,
             String pCode) {
-        return this.mApis.tokenRx(
+        return this.mApi.tokenRx(
                 pClientId,
                 pClientSecret,
                 pRedirectUri,
@@ -128,122 +128,122 @@ class Api implements IApi {
 
     @Override
     public Call<List<User>> users(String pQ) {
-        return this.mApis.users(pQ);
+        return this.mApi.users(pQ);
     }
 
     @Override
     public Observable<List<User>> usersRx(String pQ) {
-        return this.mApis.usersRx(pQ);
+        return this.mApi.usersRx(pQ);
     }
 
     @Override
     public Call<User> user(int pId) {
-        return this.mApis.user(pId);
+        return this.mApi.user(pId);
     }
 
     @Override
     public Observable<User> userRx(int pId) {
-        return this.mApis.userRx(pId);
+        return this.mApi.userRx(pId);
     }
 
     @Override
     public Call<List<Track>> userTracks(int pId) {
-        return this.mApis.userTracks(pId);
+        return this.mApi.userTracks(pId);
     }
 
     @Override
     public Observable<List<Track>> userTracksRx(int pId) {
-        return this.mApis.userTracksRx(pId);
+        return this.mApi.userTracksRx(pId);
     }
 
     @Override
     public Call<List<Playlist>> userPlaylists(int pId) {
-        return this.mApis.userPlaylists(pId);
+        return this.mApi.userPlaylists(pId);
     }
 
     @Override
     public Observable<List<Playlist>> userPlaylistsRx(int pId) {
-        return this.mApis.userPlaylistsRx(pId);
+        return this.mApi.userPlaylistsRx(pId);
     }
 
     @Override
     public Call<List<Comment>> userComments(int pId) {
-        return this.mApis.userComments(pId);
+        return this.mApi.userComments(pId);
     }
 
     @Override
     public Observable<List<Comment>> userCommentsRx(int pId) {
-        return this.mApis.userCommentsRx(pId);
+        return this.mApi.userCommentsRx(pId);
     }
 
     @Override
     public Call<List<Group>> userGroups(int pId) {
-        return this.mApis.userGroups(pId);
+        return this.mApi.userGroups(pId);
     }
 
     @Override
     public Observable<List<Group>> userGroupsRx(int pId) {
-        return this.mApis.userGroupsRx(pId);
+        return this.mApi.userGroupsRx(pId);
     }
 
     @Override
     public Call<List<WebProfile>> userWebProfiles(int pId) {
-        return this.mApis.userWebProfiles(pId);
+        return this.mApi.userWebProfiles(pId);
     }
 
     @Override
     public Observable<List<WebProfile>> userWebProfilesRx(int pId) {
-        return this.mApis.userWebProfilesRx(pId);
+        return this.mApi.userWebProfilesRx(pId);
     }
 
     @Override
     public Call<List<User>> userFollowings(int pId) {
-        return this.mApis.userFollowings(pId);
+        return this.mApi.userFollowings(pId);
     }
 
     @Override
     public Observable<List<User>> userFollowingsRx(int pId) {
-        return this.mApis.userFollowingsRx(pId);
+        return this.mApi.userFollowingsRx(pId);
     }
 
     @Override
     public Call<List<User>> userFollowers(int pId) {
-        return this.mApis.userFollowers(pId);
+        return this.mApi.userFollowers(pId);
     }
 
     @Override
     public Observable<List<User>> userFollowersRx(int pId) {
-        return this.mApis.userFollowersRx(pId);
+        return this.mApi.userFollowersRx(pId);
     }
 
     @Override
     public Call<List<Track>> userFavorites(int pId) {
-        return this.mApis.userFavorites(pId);
+        return this.mApi.userFavorites(pId);
     }
 
     @Override
     public Call<Collection> userFavorites(int pId, int pLinkedPartitioning, int pLimit, String pOffset) {
-        return this.mApis.userFavorites(pId, pLinkedPartitioning, pLimit, pOffset);
+        return this.mApi.userFavorites(pId, pLinkedPartitioning, pLimit, pOffset);
     }
 
     @Override
     public Observable<List<Track>> userFavoritesRx(int pId) {
-        return this.mApis.userFavoritesRx(pId);
+        return this.mApi.userFavoritesRx(pId);
     }
 
     @Override
     public Observable<Collection> userFavoritesRx(int pId, int pLinkedPartitioning, int pLimit, String pOffset) {
-        return this.mApis.userFavoritesRx(pId, pLinkedPartitioning, pLimit, pOffset);
+        return this.mApi.userFavoritesRx(pId, pLinkedPartitioning, pLimit, pOffset);
     }
 
     @Override
     public Call<List<Track>> tracks() {
-        return this.mApis.tracks();
+        return this.mApi.tracks();
     }
 
     @Override
     public Call<List<Track>> tracks(String pQ) {
-        return this.mApis.tracks(pQ);
+        return this.mApi.tracks(pQ);
     }
 
     @Override
@@ -261,7 +261,7 @@ class Api implements IApi {
             String pIds,
             String pGenres,
             String pTypes) {
-        return this.mApis.tracks(
+        return this.mApi.tracks(
                 pQ,
                 pTags,
                 pFilter,
@@ -279,12 +279,12 @@ class Api implements IApi {
 
     @Override
     public Call<Collection> tracks(int pLinkedPartitioning, int pLimit, int pOffset) {
-        return this.mApis.tracks(pLinkedPartitioning, pLimit, pOffset);
+        return this.mApi.tracks(pLinkedPartitioning, pLimit, pOffset);
     }
 
     @Override
     public Call<Collection> tracks(int pLinkedPartitioning, int pLimit, int pOffset, String pQ) {
-        return this.mApis.tracks(pLinkedPartitioning, pLimit, pOffset, pQ);
+        return this.mApi.tracks(pLinkedPartitioning, pLimit, pOffset, pQ);
     }
 
     @Override
@@ -305,7 +305,7 @@ class Api implements IApi {
             String pIds,
             String pGenres,
             String pTypes) {
-        return this.mApis.tracks(
+        return this.mApi.tracks(
                 pLinkedPartitioning,
                 pLimit,
                 pOffset,
@@ -326,12 +326,12 @@ class Api implements IApi {
 
     @Override
     public Observable<List<Track>> tracksRx() {
-        return this.mApis.tracksRx();
+        return this.mApi.tracksRx();
     }
 
     @Override
     public Observable<List<Track>> tracksRx(String pQ) {
-        return this.mApis.tracksRx(pQ);
+        return this.mApi.tracksRx(pQ);
     }
 
     @Override
@@ -349,7 +349,7 @@ class Api implements IApi {
             String pIds,
             String pGenres,
             String pTypes) {
-        return this.mApis.tracksRx(
+        return this.mApi.tracksRx(
                 pQ,
                 pTags,
                 pFilter,
@@ -367,12 +367,12 @@ class Api implements IApi {
 
     @Override
     public Observable<Collection> tracksRx(int pLinkedPartitioning, int pLimit, int pOffset) {
-        return this.mApis.tracksRx(pLinkedPartitioning, pLimit, pOffset);
+        return this.mApi.tracksRx(pLinkedPartitioning, pLimit, pOffset);
     }
 
     @Override
     public Observable<Collection> tracksRx(int pLinkedPartitioning, int pLimit, int pOffset, String pQ) {
-        return this.mApis.tracksRx(pLinkedPartitioning, pLimit, pOffset, pQ);
+        return this.mApi.tracksRx(pLinkedPartitioning, pLimit, pOffset, pQ);
     }
 
     @Override
@@ -393,7 +393,7 @@ class Api implements IApi {
             String pIds,
             String pGenres,
             String pTypes) {
-        return this.mApis.tracksRx(
+        return this.mApi.tracksRx(
                 pLinkedPartitioning,
                 pLimit,
                 pOffset,
@@ -414,171 +414,191 @@ class Api implements IApi {
 
     @Override
     public Call<Track> track(int pId) {
-        return this.mApis.track(pId);
+        return this.mApi.track(pId);
     }
 
     @Override
     public Observable<Track> trackRx(int pId) {
-        return this.mApis.trackRx(pId);
+        return this.mApi.trackRx(pId);
     }
 
     @Override
     public Call<List<Comment>> trackComments(int pId) {
-        return this.mApis.trackComments(pId);
+        return this.mApi.trackComments(pId);
     }
 
     @Override
     public Observable<List<Comment>> trackCommentsRx(int pId) {
-        return this.mApis.trackCommentsRx(pId);
+        return this.mApi.trackCommentsRx(pId);
     }
 
     @Override
     public Call<List<User>> trackFavoriters(int pId) {
-        return this.mApis.trackFavoriters(pId);
+        return this.mApi.trackFavoriters(pId);
     }
 
     @Override
     public Observable<List<User>> trackFavoritersRx(int pId) {
-        return this.mApis.trackFavoritersRx(pId);
+        return this.mApi.trackFavoritersRx(pId);
     }
 
     @Override
     public Call<List<Playlist>> playlists(String pQ, String pRepresentation) {
-        return this.mApis.playlists(pQ, pRepresentation);
+        return this.mApi.playlists(pQ, pRepresentation);
     }
 
     @Override
     public Observable<List<Playlist>> playlistsRx(String pQ, String pRepresentation) {
-        return this.mApis.playlistsRx(pQ, pRepresentation);
+        return this.mApi.playlistsRx(pQ, pRepresentation);
     }
 
     @Override
     public Call<Playlist> playlist(int pId) {
-        return this.mApis.playlist(pId);
+        return this.mApi.playlist(pId);
     }
 
     @Override
     public Observable<Playlist> playlistRx(int pId) {
-        return this.mApis.playlistRx(pId);
+        return this.mApi.playlistRx(pId);
     }
 
     @Override
     public Call<List<Group>> groups(String pQ) {
-        return this.mApis.groups(pQ);
+        return this.mApi.groups(pQ);
     }
 
     @Override
     public Observable<List<Group>> groupsRx(String pQ) {
-        return this.mApis.groupsRx(pQ);
+        return this.mApi.groupsRx(pQ);
     }
 
     @Override
     public Call<Group> group(int pId) {
-        return this.mApis.group(pId);
+        return this.mApi.group(pId);
     }
 
     @Override
     public Observable<Group> groupRx(int pId) {
-        return this.mApis.groupRx(pId);
+        return this.mApi.groupRx(pId);
     }
 
     @Override
     public Call<List<User>> groupModerators(int pId) {
-        return this.mApis.groupModerators(pId);
+        return this.mApi.groupModerators(pId);
     }
 
     @Override
     public Observable<List<User>> groupModeratorsRx(int pId) {
-        return this.mApis.groupModeratorsRx(pId);
+        return this.mApi.groupModeratorsRx(pId);
     }
 
     @Override
     public Call<List<User>> groupMembers(int pId) {
-        return this.mApis.groupMembers(pId);
+        return this.mApi.groupMembers(pId);
     }
 
     @Override
     public Observable<List<User>> groupMembersRx(int pId) {
-        return this.mApis.groupMembersRx(pId);
+        return this.mApi.groupMembersRx(pId);
     }
 
     @Override
     public Call<List<User>> groupContributors(int pId) {
-        return this.mApis.groupContributors(pId);
+        return this.mApi.groupContributors(pId);
     }
 
     @Override
     public Observable<List<User>> groupContributorsRx(int pId) {
-        return this.mApis.groupContributorsRx(pId);
+        return this.mApi.groupContributorsRx(pId);
     }
 
     @Override
     public Call<List<User>> groupUsers(int pId) {
-        return this.mApis.groupUsers(pId);
+        return this.mApi.groupUsers(pId);
     }
 
     @Override
     public Observable<List<User>> groupUsersRx(int pId) {
-        return this.mApis.groupUsersRx(pId);
+        return this.mApi.groupUsersRx(pId);
     }
 
     @Override
     public Call<List<Track>> groupTracks(int pId) {
-        return this.mApis.groupTracks(pId);
+        return this.mApi.groupTracks(pId);
     }
 
     @Override
     public Observable<List<Track>> groupTracksRx(int pId) {
-        return this.mApis.groupTracksRx(pId);
+        return this.mApi.groupTracksRx(pId);
     }
 
     @Override
     public Call<List<Comment>> comments() {
-        return this.mApis.comments();
+        return this.mApi.comments();
     }
 
     @Override
     public Observable<List<Comment>> commentsRx() {
-        return this.mApis.commentsRx();
+        return this.mApi.commentsRx();
     }
 
     @Override
     public Call<Comment> comment(int pId) {
-        return this.mApis.comment(pId);
+        return this.mApi.comment(pId);
     }
 
     @Override
     public Observable<Comment> commentRx(int pId) {
-        return this.mApis.commentRx(pId);
+        return this.mApi.commentRx(pId);
     }
 
     @Override
     public Call<List<App>> apps() {
-        return this.mApis.apps();
+        return this.mApi.apps();
     }
 
     @Override
     public Observable<List<App>> appsRx() {
-        return this.mApis.appsRx();
+        return this.mApi.appsRx();
     }
 
     @Override
     public Call<App> app(int pId) {
-        return this.mApis.app(pId);
+        return this.mApi.app(pId);
     }
 
     @Override
     public Observable<App> appRx(int pId) {
-        return this.mApis.appRx(pId);
+        return this.mApi.appRx(pId);
     }
 
     @Override
     public Call<Me> me(String pAccessToken) {
-        return this.mApis.me(pAccessToken);
+        return this.mApi.me(pAccessToken);
     }
 
     @Override
     public Observable<Me> meRx(String pAccessToken) {
-        return this.mApis.meRx(pAccessToken);
+        return this.mApi.meRx(pAccessToken);
+    }
+
+    @Override
+    public Call<Void> favorite(int pId) {
+        return this.mApi.favorite(pId);
+    }
+    
+    @Override
+    public Observable<Void> favoriteRx(int pId) {
+        return this.mApi.favoriteRx(pId);
+    }
+
+    @Override
+    public Call<Void> unfavorite(int pId) {
+        return this.mApi.unfavorite(pId);
+    }
+
+    @Override
+    public Observable<Void> unfavoriteRx(int pId) {
+        return this.mApi.unfavoriteRx(pId);
     }
 }

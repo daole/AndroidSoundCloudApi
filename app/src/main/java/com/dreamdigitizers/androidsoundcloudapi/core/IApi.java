@@ -14,9 +14,11 @@ import com.dreamdigitizers.androidsoundcloudapi.models.WebProfile;
 import java.util.List;
 
 import retrofit.Call;
+import retrofit.http.DELETE;
 import retrofit.http.Field;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.PUT;
 import retrofit.http.Path;
 import retrofit.http.Query;
 import rx.Observable;
@@ -317,4 +319,16 @@ public interface IApi {
 
     @GET("/me")
     Observable<Me> meRx(@Query("oauth_token") String pAccessToken);
+
+    @PUT("/me/favorites/{id}")
+    Call<Void> favorite(@Path("id") int pId);
+
+    @PUT("/me/favorites/{id}")
+    Observable<Void> favoriteRx(@Path("id") int pId);
+
+    @DELETE("/me/favorites/{id}")
+    Call<Void> unfavorite(@Path("id") int pId);
+
+    @DELETE("/me/favorites/{id}")
+    Observable<Void> unfavoriteRx(@Path("id") int pId);
 }
