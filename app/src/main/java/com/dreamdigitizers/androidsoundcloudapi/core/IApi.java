@@ -331,4 +331,10 @@ public interface IApi {
 
     @DELETE("/me/favorites/{id}")
     Observable<Void> unfavoriteRx(@Path("id") int pId);
+
+    @GET("e1/me/track_likes/ids")
+    Call<List<Integer>> trackLikes();
+
+    @GET("e1/me/track_likes/ids")
+    Observable<List<Integer>> trackLikesRx();
 }

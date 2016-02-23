@@ -77,7 +77,7 @@ class Api implements IApi {
                 Request request = pChain.request();
                 HttpUrl.Builder builder = request.httpUrl().newBuilder();
                 builder.addQueryParameter("client_id", pClientId);
-                if(!TextUtils.isEmpty(pOauthToken)) {
+                if (!TextUtils.isEmpty(pOauthToken)) {
                     builder.addQueryParameter("oauth_token", pOauthToken);
                 }
                 HttpUrl httpUrl = builder.build();
@@ -586,7 +586,7 @@ class Api implements IApi {
     public Call<Void> favorite(int pId) {
         return this.mApi.favorite(pId);
     }
-    
+
     @Override
     public Observable<Void> favoriteRx(int pId) {
         return this.mApi.favoriteRx(pId);
@@ -600,5 +600,15 @@ class Api implements IApi {
     @Override
     public Observable<Void> unfavoriteRx(int pId) {
         return this.mApi.unfavoriteRx(pId);
+    }
+
+    @Override
+    public Call<List<Integer>> trackLikes() {
+        return this.mApi.trackLikes();
+    }
+
+    @Override
+    public Observable<List<Integer>> trackLikesRx() {
+        return this.mApi.trackLikesRx();
     }
 }
