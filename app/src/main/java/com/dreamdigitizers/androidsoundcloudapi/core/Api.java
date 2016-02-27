@@ -1,6 +1,7 @@
 package com.dreamdigitizers.androidsoundcloudapi.core;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.dreamdigitizers.androidsoundcloudapi.models.App;
 import com.dreamdigitizers.androidsoundcloudapi.models.Collection;
@@ -17,6 +18,7 @@ import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,6 +30,8 @@ import retrofit.RxJavaCallAdapterFactory;
 import rx.Observable;
 
 class Api implements IApi {
+    private static final String TAG = Api.class.getSimpleName();
+
     private static final String ERROR_MESSAGE__NOT_YET_INITIALIZED = "Api.initialize() has not yet called.";
 
     private static Api instance;
@@ -81,8 +85,15 @@ class Api implements IApi {
                     builder.addQueryParameter("oauth_token", pOauthToken);
                 }
                 HttpUrl httpUrl = builder.build();
+                Log.d(Api.TAG, httpUrl.url().toString());
                 request = request.newBuilder().url(httpUrl).build();
-                return pChain.proceed(request);
+                Response response = pChain.proceed(request);
+                String bodyString = response.body().string();
+                response = response.newBuilder()
+                        .body(ResponseBody.create(response.body().contentType(), bodyString))
+                        .build();
+                Log.d(Api.TAG, bodyString);
+                return response;
             }
         });
 

@@ -1,6 +1,7 @@
 package com.dreamdigitizers.androidsoundcloudapi.core;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.dreamdigitizers.androidsoundcloudapi.models.v2.Charts;
 import com.squareup.okhttp.HttpUrl;
@@ -8,6 +9,7 @@ import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
 
@@ -18,6 +20,8 @@ import retrofit.RxJavaCallAdapterFactory;
 import rx.Observable;
 
 class ApiV2 implements IApiV2 {
+    private static final String TAG = Api.class.getSimpleName();
+
     private static final String ERROR_MESSAGE__NOT_YET_INITIALIZED = "ApiV2.initialize() has not yet called.";
 
     private static ApiV2 instance;
@@ -54,8 +58,15 @@ class ApiV2 implements IApiV2 {
                     builder.addQueryParameter("oauth_token", pOauthToken);
                 }
                 HttpUrl httpUrl = builder.build();
+                Log.d(ApiV2.TAG, httpUrl.url().toString());
                 request = request.newBuilder().url(httpUrl).build();
-                return pChain.proceed(request);
+                Response response = pChain.proceed(request);
+                String bodyString = response.body().string();
+                response = response.newBuilder()
+                        .body(ResponseBody.create(response.body().contentType(), bodyString))
+                        .build();
+                Log.d(ApiV2.TAG, bodyString);
+                return response;
             }
         });
 
