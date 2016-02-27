@@ -1,6 +1,5 @@
 package com.dreamdigitizers.androidsoundcloudapi.support;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.webkit.WebView;
@@ -8,33 +7,33 @@ import android.webkit.WebViewClient;
 
 import com.dreamdigitizers.androidsoundcloudapi.Constants;
 
+import java.lang.ref.WeakReference;
 import java.net.URI;
 
 public class SoundCloudWebViewClient extends WebViewClient {
-    private Activity mActivity;
     private String mProtocolScheme;
-    private IOnLoginActionsListener mListener;
+    private WeakReference<IOnLoginActionsListener> mListener;
 
     public SoundCloudWebViewClient(
-            Activity pActivity,
             String pProtocolScheme,
             IOnLoginActionsListener pListener) {
-        this.mActivity = pActivity;
         this.mProtocolScheme = pProtocolScheme;
-        this.mListener = pListener;
+        this.mListener = new WeakReference<>(pListener);
     }
 
     @Override
     public void onPageStarted(WebView pWebView, String pUrl, Bitmap pFavicon) {
-        if (this.mListener != null) {
-            this.mListener.onPageStarted(pWebView, pUrl, pFavicon);
+        IOnLoginActionsListener listener = this.mListener.get();
+        if (listener != null) {
+            listener.onPageStarted(pWebView, pUrl, pFavicon);
         }
     }
 
     @Override
     public void onPageFinished(WebView pWebView, String pUrl) {
-        if (this.mListener != null) {
-            this.mListener.onPageFinished(pWebView, pUrl);
+        IOnLoginActionsListener listener = this.mListener.get();
+        if (listener != null) {
+            listener.onPageFinished(pWebView, pUrl);
         }
     }
 
@@ -42,8 +41,9 @@ public class SoundCloudWebViewClient extends WebViewClient {
     public boolean shouldOverrideUrlLoading(WebView pWebView, String pUrl) {
         if (!TextUtils.isEmpty(pUrl) && pUrl.startsWith(this.mProtocolScheme)) {
             String accessToken = this.retrieveAccessToken(pUrl);
-            if(this.mListener != null) {
-                this.mListener.onLoginComplete(accessToken);
+            IOnLoginActionsListener listener = this.mListener.get();
+            if(listener != null) {
+                listener.onLoginComplete(accessToken);
             }
             return true;
         }
