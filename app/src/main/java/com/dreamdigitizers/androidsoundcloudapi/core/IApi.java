@@ -32,6 +32,8 @@ public interface IApi {
             + "&display=%s"
             + "&state=%s";
 
+    String API_URL__LOGOUT = "https://soundcloud.com/connect/logout?return_to=";
+
     String API_URL__BASE = "https://api.soundcloud.com";
 
     //-----------------Token-----------------//

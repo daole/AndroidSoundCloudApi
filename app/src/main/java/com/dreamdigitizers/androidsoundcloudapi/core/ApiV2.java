@@ -38,6 +38,12 @@ class ApiV2 implements IApiV2 {
         }
     }
 
+    public static void dispose() {
+        if (ApiV2.instance != null) {
+            ApiV2.instance = null;
+        }
+    }
+
     public static ApiV2 getInstance() {
         if(ApiV2.instance == null) {
             throw new IllegalStateException(ApiV2.ERROR_MESSAGE__NOT_YET_INITIALIZED);

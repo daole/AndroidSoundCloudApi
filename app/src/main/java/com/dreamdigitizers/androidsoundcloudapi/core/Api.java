@@ -21,6 +21,8 @@ import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 
 import retrofit.Call;
@@ -48,6 +50,12 @@ class Api implements IApi {
         }
     }
 
+    public static void dispose() {
+        if (Api.instance != null) {
+            Api.instance = null;
+        }
+    }
+
     public static Api getInstance() {
         if(Api.instance == null) {
             throw new IllegalStateException(Api.ERROR_MESSAGE__NOT_YET_INITIALIZED);
@@ -61,8 +69,9 @@ class Api implements IApi {
             String pResponseType,
             String pScope,
             String pDisplay,
-            String pState) {
-        return String.format(
+            String pState,
+            boolean pIsLogout) {
+        String url = String.format(
                 IApi.API_URL__CONNECT,
                 pClientId,
                 pRedirectUri,
@@ -70,6 +79,14 @@ class Api implements IApi {
                 pScope,
                 pDisplay,
                 pState);
+        if (pIsLogout) {
+            try {
+                url = IApi.API_URL__LOGOUT + URLEncoder.encode(url, "utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+        return url;
     }
 
     private Api(final String pClientId, final String pOauthToken) {

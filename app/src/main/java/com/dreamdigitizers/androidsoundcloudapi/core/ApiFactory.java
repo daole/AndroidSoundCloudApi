@@ -11,6 +11,11 @@ public class ApiFactory {
         ApiV2.initialize(pClientId, pOauthToken);
     }
 
+    public static void dispose() {
+        Api.dispose();
+        ApiV2.dispose();
+    }
+
     public static IApi getApiInstance() {
         return Api.getInstance();
     }
@@ -25,13 +30,15 @@ public class ApiFactory {
             String pResponseType,
             String pScope,
             String pDisplay,
-            String pState) {
+            String pState,
+            boolean pIsLogout) {
         return Api.getConnectionString(
                 pClientId,
                 pRedirectUri,
                 pResponseType,
                 pScope,
                 pDisplay,
-                pState);
+                pState,
+                pIsLogout);
     }
 }
