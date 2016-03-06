@@ -137,7 +137,7 @@ public class Playlist extends ModelBase {
 
     @SerializedName("tracks")
     @Expose
-    private List<Track> mTracks = new ArrayList<Track>();
+    private List<Track> mTracks;
 
     public int getDuration() {
         return this.mDuration;
