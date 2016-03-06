@@ -502,6 +502,16 @@ class Api implements IApi {
     }
 
     @Override
+    public Call<Void> deletePlaylist(int pId) {
+        return this.mApi.deletePlaylist(pId);
+    }
+
+    @Override
+    public Observable<Void> deletePlaylistRx(int pId) {
+        return this.mApi.deletePlaylistRx(pId);
+    }
+
+    @Override
     public Call<List<Group>> groups(String pQ) {
         return this.mApi.groups(pQ);
     }

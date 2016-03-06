@@ -253,6 +253,12 @@ public interface IApi {
     @GET("/playlists/{id}")
     Observable<Playlist> playlistRx(@Path("id") int pId);
 
+    @DELETE("/playlists/{id}")
+    Call<Void> deletePlaylist(@Path("id") int pId);
+
+    @DELETE("/playlists/{id}")
+    Observable<Void> deletePlaylistRx(@Path("id") int pId);
+
     //-----------------Group-----------------//
     @GET("/groups")
     Call<List<Group>> groups(@Query("q") String pQ);
