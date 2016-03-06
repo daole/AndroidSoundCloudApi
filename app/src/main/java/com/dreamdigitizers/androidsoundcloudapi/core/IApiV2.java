@@ -37,12 +37,12 @@ public interface IApiV2 {
     Call<List<Track>> userFavorites(@Path("id") int pId);
 
     @GET("/users/{id}/likes")
-    Call<Collection> userFavorites(@Path("id") int pId, @Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") String pOffset);
+    Call<Tracks> userFavorites(@Path("id") int pId, @Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") String pOffset);
 
     @GET("/users/{id}/likes")
     Observable<List<Track>> userFavoritesRx(@Path("id") int pId);
 
     @GET("/users/{id}/likes")
-    Observable<Collection> userFavoritesRx(@Path("id") int pId, @Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") String pOffset);
+    Observable<Tracks> userFavoritesRx(@Path("id") int pId, @Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") String pOffset);
     */
 }

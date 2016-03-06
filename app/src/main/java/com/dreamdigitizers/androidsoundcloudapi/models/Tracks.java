@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Collection extends ModelBase {
+public class Tracks extends ModelBase {
     @SerializedName("collection")
     @Expose
     private List<Track> mCollection;

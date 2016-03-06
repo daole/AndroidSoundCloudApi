@@ -133,7 +133,7 @@ class ApiV2 implements IApiV2 {
     }
 
     @Override
-    public Call<Collection> userFavorites(int pId, int pLinkedPartitioning, int pLimit, String pOffset) {
+    public Call<Tracks> userFavorites(int pId, int pLinkedPartitioning, int pLimit, String pOffset) {
         return this.mApi.userFavorites(pId, pLinkedPartitioning, pLimit, pOffset);
     }
 
@@ -143,7 +143,7 @@ class ApiV2 implements IApiV2 {
     }
 
     @Override
-    public Observable<Collection> userFavoritesRx(int pId, int pLinkedPartitioning, int pLimit, String pOffset) {
+    public Observable<Tracks> userFavoritesRx(int pId, int pLinkedPartitioning, int pLimit, String pOffset) {
         return this.mApi.userFavoritesRx(pId, pLinkedPartitioning, pLimit, pOffset);
     }
     */

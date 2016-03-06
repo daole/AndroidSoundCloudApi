@@ -4,7 +4,8 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.dreamdigitizers.androidsoundcloudapi.models.App;
-import com.dreamdigitizers.androidsoundcloudapi.models.Collection;
+import com.dreamdigitizers.androidsoundcloudapi.models.Playlists;
+import com.dreamdigitizers.androidsoundcloudapi.models.Tracks;
 import com.dreamdigitizers.androidsoundcloudapi.models.Comment;
 import com.dreamdigitizers.androidsoundcloudapi.models.Group;
 import com.dreamdigitizers.androidsoundcloudapi.models.Me;
@@ -190,8 +191,18 @@ class Api implements IApi {
     }
 
     @Override
+    public Call<Playlists> userPlaylists(int pId, int pLinkedPartitioning, int pLimit, int pOffset) {
+        return this.mApi.userPlaylists(pId, pLinkedPartitioning, pLimit, pOffset);
+    }
+
+    @Override
     public Observable<List<Playlist>> userPlaylistsRx(int pId) {
         return this.mApi.userPlaylistsRx(pId);
+    }
+
+    @Override
+    public Observable<Playlists> userPlaylistsRx(int pId, int pLinkedPartitioning, int pLimit, int pOffset) {
+        return this.mApi.userPlaylistsRx(pId, pLinkedPartitioning, pLimit, pOffset);
     }
 
     @Override
@@ -250,7 +261,7 @@ class Api implements IApi {
     }
 
     @Override
-    public Call<Collection> userFavorites(int pId, int pLinkedPartitioning, int pLimit, String pOffset) {
+    public Call<Tracks> userFavorites(int pId, int pLinkedPartitioning, int pLimit, String pOffset) {
         return this.mApi.userFavorites(pId, pLinkedPartitioning, pLimit, pOffset);
     }
 
@@ -260,7 +271,7 @@ class Api implements IApi {
     }
 
     @Override
-    public Observable<Collection> userFavoritesRx(int pId, int pLinkedPartitioning, int pLimit, String pOffset) {
+    public Observable<Tracks> userFavoritesRx(int pId, int pLinkedPartitioning, int pLimit, String pOffset) {
         return this.mApi.userFavoritesRx(pId, pLinkedPartitioning, pLimit, pOffset);
     }
 
@@ -306,17 +317,17 @@ class Api implements IApi {
     }
 
     @Override
-    public Call<Collection> tracks(int pLinkedPartitioning, int pLimit, int pOffset) {
+    public Call<Tracks> tracks(int pLinkedPartitioning, int pLimit, int pOffset) {
         return this.mApi.tracks(pLinkedPartitioning, pLimit, pOffset);
     }
 
     @Override
-    public Call<Collection> tracks(int pLinkedPartitioning, int pLimit, int pOffset, String pQ) {
+    public Call<Tracks> tracks(int pLinkedPartitioning, int pLimit, int pOffset, String pQ) {
         return this.mApi.tracks(pLinkedPartitioning, pLimit, pOffset, pQ);
     }
 
     @Override
-    public Call<Collection> tracks(
+    public Call<Tracks> tracks(
             int pLinkedPartitioning,
             int pLimit,
             int pOffset,
@@ -394,17 +405,17 @@ class Api implements IApi {
     }
 
     @Override
-    public Observable<Collection> tracksRx(int pLinkedPartitioning, int pLimit, int pOffset) {
+    public Observable<Tracks> tracksRx(int pLinkedPartitioning, int pLimit, int pOffset) {
         return this.mApi.tracksRx(pLinkedPartitioning, pLimit, pOffset);
     }
 
     @Override
-    public Observable<Collection> tracksRx(int pLinkedPartitioning, int pLimit, int pOffset, String pQ) {
+    public Observable<Tracks> tracksRx(int pLinkedPartitioning, int pLimit, int pOffset, String pQ) {
         return this.mApi.tracksRx(pLinkedPartitioning, pLimit, pOffset, pQ);
     }
 
     @Override
-    public Observable<Collection> tracksRx(
+    public Observable<Tracks> tracksRx(
             int pLinkedPartitioning,
             int pLimit,
             int pOffset,

@@ -1,7 +1,8 @@
 package com.dreamdigitizers.androidsoundcloudapi.core;
 
 import com.dreamdigitizers.androidsoundcloudapi.models.App;
-import com.dreamdigitizers.androidsoundcloudapi.models.Collection;
+import com.dreamdigitizers.androidsoundcloudapi.models.Playlists;
+import com.dreamdigitizers.androidsoundcloudapi.models.Tracks;
 import com.dreamdigitizers.androidsoundcloudapi.models.Comment;
 import com.dreamdigitizers.androidsoundcloudapi.models.Group;
 import com.dreamdigitizers.androidsoundcloudapi.models.Me;
@@ -76,7 +77,13 @@ public interface IApi {
     Call<List<Playlist>> userPlaylists(@Path("id") int pId);
 
     @GET("/users/{id}/playlists")
+    Call<Playlists> userPlaylists(@Path("id") int pId, @Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset);
+
+    @GET("/users/{id}/playlists")
     Observable<List<Playlist>> userPlaylistsRx(@Path("id") int pId);
+
+    @GET("/users/{id}/playlists")
+    Observable<Playlists> userPlaylistsRx(@Path("id") int pId, @Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset);
 
     @GET("/users/{id}/comments")
     Call<List<Comment>> userComments(@Path("id") int pId);
@@ -112,13 +119,13 @@ public interface IApi {
     Call<List<Track>> userFavorites(@Path("id") int pId);
 
     @GET("/users/{id}/favorites")
-    Call<Collection> userFavorites(@Path("id") int pId, @Query("linked_partitioning") int pLinkedPartitioning, @Query("page_size") int pLimit, @Query("cursor") String pOffset);
+    Call<Tracks> userFavorites(@Path("id") int pId, @Query("linked_partitioning") int pLinkedPartitioning, @Query("page_size") int pLimit, @Query("cursor") String pOffset);
 
     @GET("/users/{id}/favorites")
     Observable<List<Track>> userFavoritesRx(@Path("id") int pId);
 
     @GET("/users/{id}/favorites")
-    Observable<Collection> userFavoritesRx(@Path("id") int pId, @Query("linked_partitioning") int pLinkedPartitioning, @Query("page_size") int pLimit, @Query("cursor") String pOffset);
+    Observable<Tracks> userFavoritesRx(@Path("id") int pId, @Query("linked_partitioning") int pLinkedPartitioning, @Query("page_size") int pLimit, @Query("cursor") String pOffset);
 
     //-----------------Track-----------------//
     @GET("/tracks")
@@ -144,13 +151,13 @@ public interface IApi {
             @Query("types") String pTypes);
 
     @GET("/tracks")
-    Call<Collection> tracks(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset);
+    Call<Tracks> tracks(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset);
 
     @GET("/tracks")
-    Call<Collection> tracks(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset, @Query("q") String pQ);
+    Call<Tracks> tracks(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset, @Query("q") String pQ);
 
     @GET("/tracks")
-    Call<Collection> tracks(
+    Call<Tracks> tracks(
             @Query("linked_partitioning") int pLinkedPartitioning,
             @Query("limit") int pLimit,
             @Query("offset") int pOffset,
@@ -191,13 +198,13 @@ public interface IApi {
             @Query("types") String pTypes);
 
     @GET("/tracks")
-    Observable<Collection> tracksRx(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset);
+    Observable<Tracks> tracksRx(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset);
 
     @GET("/tracks")
-    Observable<Collection> tracksRx(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset, @Query("q") String pQ);
+    Observable<Tracks> tracksRx(@Query("linked_partitioning") int pLinkedPartitioning, @Query("limit") int pLimit, @Query("offset") int pOffset, @Query("q") String pQ);
 
     @GET("/tracks")
-    Observable<Collection> tracksRx(
+    Observable<Tracks> tracksRx(
             @Query("linked_partitioning") int pLinkedPartitioning,
             @Query("limit") int pLimit,
             @Query("offset") int pOffset,
