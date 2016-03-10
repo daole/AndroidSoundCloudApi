@@ -14,6 +14,7 @@ import com.dreamdigitizers.androidsoundcloudapi.models.Token;
 import com.dreamdigitizers.androidsoundcloudapi.models.Track;
 import com.dreamdigitizers.androidsoundcloudapi.models.User;
 import com.dreamdigitizers.androidsoundcloudapi.models.WebProfile;
+import com.dreamdigitizers.androidsoundcloudapi.models.parameters.ParameterAddTrackToPlaylist;
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.OkHttpClient;
@@ -492,6 +493,16 @@ class Api implements IApi {
     }
 
     @Override
+    public Call<Playlist> playlists(String pTitle, String pSharing, String pResourceId, String pResourceType) {
+        return this.mApi.playlists(pTitle, pSharing, pResourceId, pResourceType);
+    }
+
+    @Override
+    public Observable<Playlist> playlistsRx(String pTitle, String pSharing, String pResourceId, String pResourceType) {
+        return this.mApi.playlistsRx(pTitle, pSharing, pResourceId, pResourceType);
+    }
+
+    @Override
     public Call<Playlist> playlist(int pId) {
         return this.mApi.playlist(pId);
     }
@@ -499,6 +510,16 @@ class Api implements IApi {
     @Override
     public Observable<Playlist> playlistRx(int pId) {
         return this.mApi.playlistRx(pId);
+    }
+
+    @Override
+    public Call<Playlist> playlist(int pId, ParameterAddTrackToPlaylist pParameter) {
+        return this.mApi.playlist(pId, pParameter);
+    }
+
+    @Override
+    public Observable<Playlist> playlistRx(int pId, ParameterAddTrackToPlaylist pParameter) {
+        return this.mApi.playlistRx(pId, pParameter);
     }
 
     @Override

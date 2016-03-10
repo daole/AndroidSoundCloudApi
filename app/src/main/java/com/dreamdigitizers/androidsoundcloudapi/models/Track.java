@@ -188,6 +188,21 @@ public class Track extends ModelBase {
     @Expose
     private boolean mUserFavorite;
 
+    @Override
+    public boolean equals(Object pObject) {
+        if (pObject == null) {
+            return false;
+        }
+        if (pObject == this) {
+            return true;
+        }
+        if (!(pObject instanceof Track)) {
+            return false;
+        }
+        Track track = (Track) pObject;
+        return this.getId() == track.getId();
+    }
+
     public int getId() {
         return this.mId;
     }

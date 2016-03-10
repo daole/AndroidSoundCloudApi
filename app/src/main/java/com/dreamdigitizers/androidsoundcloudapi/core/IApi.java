@@ -11,12 +11,15 @@ import com.dreamdigitizers.androidsoundcloudapi.models.Token;
 import com.dreamdigitizers.androidsoundcloudapi.models.Track;
 import com.dreamdigitizers.androidsoundcloudapi.models.User;
 import com.dreamdigitizers.androidsoundcloudapi.models.WebProfile;
+import com.dreamdigitizers.androidsoundcloudapi.models.parameters.ParameterAddTrackToPlaylist;
 
 import java.util.List;
 
 import retrofit.Call;
+import retrofit.http.Body;
 import retrofit.http.DELETE;
 import retrofit.http.Field;
+import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.PUT;
@@ -247,11 +250,33 @@ public interface IApi {
     @GET("/playlists")
     Observable<List<Playlist>> playlistsRx(@Query("q") String pQ, @Query("representation") String pRepresentation);
 
+    @FormUrlEncoded
+    @POST("/playlists")
+    Call<Playlist> playlists(
+            @Field("playlist[title]") String pTitle,
+            @Field("playlist[sharing]") String pSharing,
+            @Field("playlist[_resource_id]") String pResourceId,
+            @Field("playlist[_resource_type]") String pResourceType);
+
+    @FormUrlEncoded
+    @POST("/playlists")
+    Observable<Playlist> playlistsRx(
+            @Field("playlist[title]") String pTitle,
+            @Field("playlist[sharing]") String pSharing,
+            @Field("playlist[_resource_id]") String pResourceId,
+            @Field("playlist[_resource_type]") String pResourceType);
+
     @GET("/playlists/{id}")
     Call<Playlist> playlist(@Path("id") int pId);
 
     @GET("/playlists/{id}")
     Observable<Playlist> playlistRx(@Path("id") int pId);
+
+    @PUT("/playlists/{id}")
+    Call<Playlist> playlist(@Path("id") int pId, @Body ParameterAddTrackToPlaylist pParameter);
+
+    @PUT("/playlists/{id}")
+    Observable<Playlist> playlistRx(@Path("id") int pId, @Body ParameterAddTrackToPlaylist pParameter);
 
     @DELETE("/playlists/{id}")
     Call<Void> deletePlaylist(@Path("id") int pId);
